@@ -2,7 +2,6 @@ const index = require('../src');
 
 it('exports the list of available cities', () => {
     const cities = index.cities;
-
     expect(Array.isArray(cities)).toBe(true);
     expect(cities.length).toBeGreaterThan(10);
 });
