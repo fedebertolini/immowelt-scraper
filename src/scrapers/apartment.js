@@ -1,20 +1,24 @@
 const cheerio = require('cheerio');
+const HtmlEntities = require('html-entities').AllHtmlEntities;
+const htmlEntities = new HtmlEntities();
 
 const parseArea = (text) => {
+    const decodedText = htmlEntities.decode(text);
     const areaRegex = /(\d*.\d*) m²/.exec(text);
     return areaRegex ? parseFloat(areaRegex[1].replace(',', '.')) : null;
 };
 
 const parsePrice = (text) => {
-    const sanitizedText = text.replace('.', '').replace(',', '.');
-    const priceRegex = /(\d+\D?\d*)\s*(?:&euro;|€)/.exec(sanitizedText);
+    const decodedText = htmlEntities.decode(text);
+    const sanitizedText = decodedText.replace('.', '').replace(',', '.');
+    const priceRegex = /(\d+\D?\d*)\s*€/.exec(sanitizedText);
     return priceRegex ? parseFloat(priceRegex[1]) : null;
 };
 
 const parseAddress = (text) => {
     const result = {};
-
-    const regex = /(\d{5}) (\D+) \(.+\),? ?(.*)?/.exec(text);
+    const decodedText = htmlEntities.decode(text);
+    const regex = /(\d{5}) (\D+) \(.+\),? ?(.*)?/.exec(decodedText);
     result.postalCode = regex ? regex[1] : null;
     result.city = regex ? regex[2] : null;
     result.address = regex ? (regex[3] || null) : null;

@@ -19,7 +19,6 @@ it('scraps the first page of the Berlin apartment list and its apartments', () =
 
         result.items.forEach((apartment) => {
             expect(apartment.rentBase).toBeGreaterThan(200);
-            expect(apartment.area).toBeGreaterThan(15);
             expect(apartment.rooms).toBeGreaterThan(0);
             expect(apartment.postalCode).toBeTruthy();
             expect(apartment.city).toBe('Berlin');
@@ -39,7 +38,6 @@ it('scraps the second page of the Köln apartment list and its apartments', () =
 
         result.items.forEach((apartment) => {
             expect(apartment.rentBase).toBeGreaterThan(200);
-            expect(apartment.area).toBeGreaterThan(15);
             expect(apartment.rooms).toBeGreaterThan(0);
             expect(apartment.postalCode).toBeTruthy();
             expect(apartment.city.includes('Köln')).toBe(true);
