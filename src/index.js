@@ -45,7 +45,7 @@ const scrapCity = (city, page = 1) => new Promise((resolve, reject) => {
             reject(`Invalid response: ${response.statusCode}`);
         }
         const apartments = listScraper.scrap(body);
-        const apartmentPromises = apartments.items.map(apartment => scrapApartment(host + apartment.url));
+        const apartmentPromises = apartments.items.map(apt => scrapApartment(host + apt.url));
 
         resolve(Promise.all(apartmentPromises).then(items => ({
             items,

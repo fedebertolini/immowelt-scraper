@@ -8,7 +8,7 @@ const scrapApartment = ($apartmentNode) => {
     return apartment;
 };
 
-const scrapPagination = ($) => ({
+const scrapPagination = $ => ({
     page: parseInt($('#pnlPaging .ci_color').text(), 10),
     totalPages: parseInt($('#pnlPaging .btn_01').last().text(), 10),
 });

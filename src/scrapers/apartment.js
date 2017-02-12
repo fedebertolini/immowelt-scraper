@@ -22,13 +22,12 @@ const parseAddress = (text) => {
 };
 
 const parseRentTotal = ($) => {
-    let price = null;
+    const price = null;
     const priceRows = $('#divPreise .datatable .datarow');
     for (let i = 0; i < priceRows.length; i++) {
         const row = priceRows.eq(i);
         if (row.find('.datalabel').text().trim() === 'Warmmiete') {
             return parsePrice(row.find('.datacontent').text());
-            break;
         }
     }
     return price;
