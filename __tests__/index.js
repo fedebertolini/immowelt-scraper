@@ -40,7 +40,7 @@ it('scraps the second page of the Köln apartment list and its apartments', () =
             expect(apartment.rentBase).toBeGreaterThan(200);
             expect(apartment.rooms).toBeGreaterThan(0);
             expect(apartment.postalCode).toBeTruthy();
-            expect(apartment.city.includes('Köln')).toBe(true);
+            expect(apartment.city).toBe('Köln');
         });
     });
 });

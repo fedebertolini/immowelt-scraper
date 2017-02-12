@@ -17,8 +17,8 @@ const parsePrice = (text) => {
 
 const parseAddress = (text) => {
     const result = {};
-    const decodedText = htmlEntities.decode(text);
-    const regex = /(\d{5}) (\D+) \(.+\),? ?(.*)?/.exec(decodedText);
+    let decodedText = htmlEntities.decode(text);
+    const regex = /(\d{5}) (\S+)[^,]*.? ?(.*)?/.exec(decodedText);
     result.postalCode = regex ? regex[1] : null;
     result.city = regex ? regex[2] : null;
     result.address = regex ? (regex[3] || null) : null;
