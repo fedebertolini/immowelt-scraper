@@ -1,6 +1,6 @@
 {
   "name": "immowelt-scraper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Web scrapper for the Immowelt apartment listing",
   "main": "src/index.js",
   "scripts": {
