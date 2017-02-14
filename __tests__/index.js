@@ -36,7 +36,7 @@ it('scraps the second page of the Köln apartment list and its apartments', () =
         expect(result.pagination.totalPages).toBeGreaterThan(5);
 
         result.items.forEach((apartment) => {
-            expect(apartment.rentBase).toBeGreaterThan(200);
+            expect(apartment.rentBase).toBeGreaterThan(100);
             expect(apartment.rooms).toBeGreaterThan(0);
             expect(apartment.postalCode).toBeTruthy();
             expect(apartment.city).toBe('Köln');
