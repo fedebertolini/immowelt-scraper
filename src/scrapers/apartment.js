@@ -45,6 +45,7 @@ exports.scrap = (page) => {
 
     let apartment = {};
 
+    apartment.id = $('#OnlineId').val();
     apartment.rentBase = parsePrice($('.hardfacts .hardfact').eq(0).text());
     apartment.rentTotal = parseRentTotal($);
     apartment.area = parseArea($('.hardfacts .hardfact').eq(1).text().replace(',', '.'));

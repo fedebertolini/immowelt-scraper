@@ -5,6 +5,7 @@ it('scraps the apartment1.html', () => {
     const file = fs.readFileSync(`${process.cwd()}/__tests__/scrapers/pages/apartment1.html`);
     const apartment = scraper.scrap(file);
 
+    expect(apartment.id).toBe('2D7C24A');
     expect(apartment.rentBase).toBe(889);
     expect(apartment.rentTotal).toBe(null);
     expect(apartment.area).toBe(80);
@@ -19,6 +20,7 @@ it('scraps the apartment2.html', () => {
     const file = fs.readFileSync(`${process.cwd()}/__tests__/scrapers/pages/apartment2.html`);
     const apartment = scraper.scrap(file);
 
+    expect(apartment.id).toBe('2DKF449');
     expect(apartment.rentBase).toBe(725);
     expect(apartment.rentTotal).toBe(915);
     expect(apartment.area).toBe(81.45);
@@ -29,10 +31,26 @@ it('scraps the apartment2.html', () => {
     expect(apartment.availableFrom).toBe(null);
 });
 
+it('scraps the apartment3.html', () => {
+    const file = fs.readFileSync(`${process.cwd()}/__tests__/scrapers/pages/apartment3.html`);
+    const apartment = scraper.scrap(file);
+
+    expect(apartment.id).toBe('2DDGQ4A');
+    expect(apartment.rentBase).toBe(1210);
+    expect(apartment.rentTotal).toBe(1525);
+    expect(apartment.area).toBe(111);
+    expect(apartment.rooms).toBe(3);
+    expect(apartment.address).toBe(null);
+    expect(apartment.postalCode).toBe('50667');
+    expect(apartment.city).toBe('Köln');
+    expect(apartment.availableFrom).toBe(null);
+});
+
 it('scraps the apartment4.html', () => {
     const file = fs.readFileSync(`${process.cwd()}/__tests__/scrapers/pages/apartment4.html`);
     const apartment = scraper.scrap(file);
 
+    expect(apartment.id).toBe('2DV424A');
     expect(apartment.rentBase).toBe(760);
     expect(apartment.rentTotal).toBe(950);
     expect(apartment.area).toBe(75);
