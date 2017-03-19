@@ -14,6 +14,9 @@ it('scraps the apartment1.html', () => {
     expect(apartment.postalCode).toBe('10115');
     expect(apartment.city).toBe('Berlin');
     expect(apartment.availableFrom).toBe(null);
+    expect(apartment.images).toEqual([
+        'https://media-pics2.immowelt.org/8/0/7/7/8B5D454FEA824C4391AE954401FF7708.jpg',
+    ]);
 });
 
 it('scraps the apartment2.html', () => {
@@ -29,6 +32,12 @@ it('scraps the apartment2.html', () => {
     expect(apartment.postalCode).toBe('10781');
     expect(apartment.city).toBe('Berlin');
     expect(apartment.availableFrom).toBe(null);
+    expect(apartment.images).toEqual([
+        'https://media-pics2.immowelt.org/C/6/4/8/196DC5D9B85B40BC8342DE0B3334846C.jpg',
+        'https://media-pics2.immowelt.org/E/A/8/0/66839D351E6D431B9E62ED713A8A08AE.jpg',
+        'https://media-pics2.immowelt.org/E/B/3/1/57651B55B55D4B578DA5D3507BDA13BE.jpg',
+        'https://media-pics1.immowelt.org/6/0/2/5/5173FEEB9C4149E7A36AB8AB80705206.jpg',
+    ]);
 });
 
 it('scraps the apartment3.html', () => {
@@ -44,6 +53,11 @@ it('scraps the apartment3.html', () => {
     expect(apartment.postalCode).toBe('50667');
     expect(apartment.city).toBe('Köln');
     expect(apartment.availableFrom).toBe(null);
+    expect(apartment.images).toEqual([
+        'https://media-pics2.immowelt.org/C/6/4/8/196DC5D9B85B40BC8342DE0B3334846C.jpg',
+        'https://media-pics2.immowelt.org/E/A/8/0/66839D351E6D431B9E62ED713A8A08AE.jpg',
+        'https://media-pics2.immowelt.org/E/B/3/1/57651B55B55D4B578DA5D3507BDA13BE.jpg',
+    ]);
 });
 
 it('scraps the apartment4.html', () => {
@@ -59,4 +73,5 @@ it('scraps the apartment4.html', () => {
     expect(apartment.postalCode).toBe('51069');
     expect(apartment.city).toBe('Köln');
     expect(apartment.availableFrom).toBe(null);
+    expect(apartment.images).toEqual([]);
 });

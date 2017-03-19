@@ -17,9 +17,11 @@ const scrapApartment = url => new Promise((resolve, reject) => {
     request(url, (error, response, body) => {
         if (error) {
             reject(error);
+            return;
         }
         if (response.statusCode !== 200) {
             reject(`Invalid response: ${response.statusCode}`);
+            return;
         }
         const apartment = apartmentScraper.scrap(body);
         apartment.url = url;
@@ -40,9 +42,11 @@ const scrapCity = (city, page = 1) => new Promise((resolve, reject) => {
     request(url, (error, response, body) => {
         if (error) {
             reject(error);
+            return;
         }
         if (response.statusCode !== 200) {
             reject(`Invalid response: ${response.statusCode}`);
+            return;
         }
         const apartments = listScraper.scrap(body);
         const apartmentPromises = apartments.items.map(apt => scrapApartment(host + apt.url));
