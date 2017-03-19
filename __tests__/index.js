@@ -1,3 +1,4 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"; //not safe, but Immowelt has a SSL mess
 const index = require('../src');
 
 it('exports the list of available cities', () => {
