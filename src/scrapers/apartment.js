@@ -43,6 +43,17 @@ const parseImages = ($) => {
     return metas.map((i, meta) => meta.attribs.content).get();
 };
 
+const parseAvailableFrom = (aboutSection) => {
+  return aboutSection
+            .find('.section_content')
+            .children()
+            .first()
+            .find('strong')
+            .first()
+            .text();
+};
+
+
 exports.scrap = (page) => {
     const $ = cheerio.load(page, {
         decodeEntities: false,
@@ -56,7 +67,7 @@ exports.scrap = (page) => {
     apartment.rentTotal = parseRentTotal($);
     apartment.area = parseArea($('.hardfacts .hardfact').eq(1).text().replace(',', '.'));
     apartment.rooms = parseInt($('.hardfacts .hardfact').eq(2).text(), 10);
-    apartment.availableFrom = null;
+    apartment.availableFrom = parseAvailableFrom($('#divImmobilie .iw_content .section_wrapper').children().eq(1));
     apartment.images = parseImages($);
 
     const addressInfo = parseAddress($('.location span').text());
