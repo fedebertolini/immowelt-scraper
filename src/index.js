@@ -5,12 +5,19 @@ const cityPaths = require('./cityPaths.json');
 
 const host = 'https://www.immowelt.de';
 
-const getListUrl = (city, page) => {
+const filterOptions = {
+    'newest': 'sort=createdate%2Bdesc&', 
+    'relevance': 'sort=relevanz&',
+    'priceAsc': 'sort=price&',
+    'priceDesc': 'sort=price%2Bdesc&'
+};
+
+const getListUrl = (city, filter, page) => {
     const cityPath = cityPaths[city];
     if (!cityPath) {
         throw new Error(`Invalid city: ${city}`);
     }
-    return `${host}/liste/${cityPath}/wohnungen/mieten?cp=${page}`;
+    return `${host}/liste/${cityPath}/wohnungen/mieten?${filter}cp=${page}`;
 };
 
 const scrapApartment = url => new Promise((resolve, reject) => {
@@ -30,7 +37,7 @@ const scrapApartment = url => new Promise((resolve, reject) => {
     });
 });
 
-const scrapCity = (city, page = 1) => new Promise((resolve, reject) => {
+const scrapCity = (city, filter = filterOptions['newest'], page = 1) => new Promise((resolve, reject) => {
     let url;
     try {
         url = getListUrl(city, page);
@@ -59,4 +66,5 @@ const scrapCity = (city, page = 1) => new Promise((resolve, reject) => {
 });
 
 exports.cities = Object.keys(cityPaths);
+exports.filterOptions = filterOptions;
 exports.scrapCity = scrapCity;
